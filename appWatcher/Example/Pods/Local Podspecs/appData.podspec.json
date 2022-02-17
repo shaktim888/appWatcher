@@ -1,0 +1,29 @@
+{
+  "name": "appData",
+  "version": "0.1.0",
+  "summary": "A short description of appData.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/admin@qq.com/appData",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "admin@qq.com": "admin@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/admin@qq.com/appData.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "appData/Classes/**/*",
+  "script_phases": {
+    "name": "rebuild_a",
+    "script": "  FMK_NAME=${PROJECT_NAME}\n  if [ \"${ACTION}\" = \"build\" ]\n    then\n    INSTALL_DIR=${SRCROOT}/Products/appData\n    DEVICE_DIR=${BUILD_ROOT}/${CONFIGURATION}-iphoneos/appData\n    SIMULATOR_DIR=${BUILD_ROOT}/${CONFIGURATION}-iphonesimulator/appData\n    \n    # -configuration ${CONFIGURATION}\n    # Clean and Building both architectures.\n    #xcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos clean build\n    #xcodebuild -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphonesimulator clean build\n    \n    if [ -d \"${INSTALL_DIR}\" ]\n      then\n      rm -rf \"${INSTALL_DIR}\"\n    fi\n    mkdir -p \"${INSTALL_DIR}\"\n    cp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/\"\n    #ditto \"${DEVICE_DIR}/Headers\" \"${INSTALL_DIR}/Headers\"\n    lipo -create \"${DEVICE_DIR}/libappData.a\" \"${SIMULATOR_DIR}/libappData.a\" -output \"${INSTALL_DIR}/libappData.a\"\n    #这个是合并完成后打开对应的文件夹，你就可以直接看到文件了\n    #open \"${SRCROOT}/Products/appData\"\n  fi\n",
+    "execution_position": "after_compile"
+  },
+  "prefix_header_file": "appData/Classes/prefix.pch",
+  "public_header_files": "appData/Classes/DataApplication.h"
+}

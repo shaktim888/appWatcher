@@ -1,0 +1,6 @@
+framework module appData {
+  umbrella header "appData-umbrella.h"
+
+  export *
+  module * { export * }
+}

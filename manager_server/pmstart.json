@@ -1,0 +1,14 @@
+{
+  "apps": [{
+      "name": "HY_Server",
+      "script": "./src/app.js",
+      "exec_mode": "cluster_mode",
+      "node-args": "--nouse-idle-notification --gc_global --max-old-space-size=1024 --max-new-space-size=2048",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "production",
+        "INSTANCE_ID": "HY_Server",
+      }
+    }
+  ]
+}

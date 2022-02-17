@@ -1,0 +1,11 @@
+platform :ios, '8.0'
+
+target 'appData_Example' do
+  pod 'appData', :path => '../'
+
+  target 'appData_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
